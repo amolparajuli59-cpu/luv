@@ -5,159 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For wivessy ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
-
-        :root { --red: #d90429; --white: #ffffff; }
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Cinzel:wght@700&display=swap');
         
-        body { 
-            background-color: var(--red); 
-            color: var(--white); 
-            font-family: 'Poppins', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            min-height: 100vh; /* height haina min-height rakhne */
-            overflow-x: hidden; /* side ma scroll huna nadine */
-            overflow-y: auto; /* mathi muni scroll garna dine */
-        }
-
-        .screen { 
-            display: none; 
-            width: 100%; 
-            max-width: 400px; 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center; 
-            padding: 40px 20px; /* space thapeko scroll garna milos bhanera */
-            box-sizing: border-box;
-            animation: fadeIn 0.5s ease; 
-        }
+        :root { --dark-pink: #c9184a; --white: #ffffff; }
+        body { background-color: var(--dark-pink); color: var(--white); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; position: relative; }
         
+        /* Floating Background Emojis */
+        .emoji-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .floating-emoji { position: absolute; bottom: -50px; font-size: 24px; animation: floatUp 10s linear infinite; opacity: 0.5; }
+        @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.5; } 100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+
+        .screen { display: none; width: 100%; max-width: 500px; flex-direction: column; align-items: center; text-align: center; padding: 30px 15px; box-sizing: border-box; animation: fadeIn 0.5s ease; position: relative; z-index: 1; }
         .active { display: flex; }
-        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Polaroid Style */
-        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transform: rotate(-2deg); margin-bottom: 20px; width: 180px; }
+        /* Login Layout */
+        .login-container { display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; flex-wrap: wrap; margin-top: 20px; }
+        .polaroid { background: white; padding: 8px 8px 25px 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transform: rotate(-3deg); width: 160px; }
         .polaroid img { width: 100%; height: auto; display: block; }
         .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 5px 0 0 0; font-size: 14px; }
 
-        /* Keypad */
-        .pin-dots { font-size: 25px; letter-spacing: 10px; margin-bottom: 10px; color: #ffb3b3; height: 30px; }
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
-        .key { width: 55px; height: 55px; background: rgba(255,255,255,0.15); border: 1px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; }
+        .keypad-side { display: flex; flex-direction: column; align-items: center; }
+        .pin-dots { font-size: 20px; letter-spacing: 5px; margin-bottom: 5px; color: #ffb3b3; height: 25px; }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .key { width: 45px; height: 45px; background: rgba(255,255,255,0.15); border: 1px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; }
 
-        /* CD & Music Animation */
-        .music-container { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 20px; position: relative; }
-        .cd-player { width: 110px; height: 110px; background: #333; border-radius: 50%; border: 4px solid #555; position: relative; animation: spin 3s linear infinite; animation-play-state: paused; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        .cd-player::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--red); border-radius: 50%; border: 2px solid white; }
+        /* Floating Gifts Animation */
+        .gift-float-wrap { display: flex; gap: 30px; margin-top: 40px; }
+        .floating-gift { font-size: 50px; cursor: pointer; animation: sideFloat 3s ease-in-out infinite alternate; }
+        @keyframes sideFloat { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+
+        /* Canva-Style Letter Layout */
+        .canva-letter { background: #f4f4f4; color: #333; padding: 20px; border-radius: 2px; width: 95%; box-shadow: 0 15px 30px rgba(0,0,0,0.3); position: relative; text-align: left; }
+        .canva-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .canva-title { font-family: 'Cinzel', serif; font-size: 32px; line-height: 0.9; color: #222; flex: 1; }
+        .canva-header img { width: 120px; border: 5px solid white; box-shadow: 2px 5px 15px rgba(0,0,0,0.1); transform: rotate(2deg); }
+        .letter-text { font-size: 13px; line-height: 1.6; color: #444; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px; }
+
+        /* CD Music Player */
+        .music-box { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 30px; position: relative; height: 140px; }
+        .cd-wrapper { position: relative; width: 120px; height: 120px; margin-left: -30px; z-index: 1; transition: all 1s ease; }
+        .cd-player { width: 100%; height: 100%; background: #222; border-radius: 50%; border: 4px solid #444; position: relative; animation: spin 3s linear infinite; animation-play-state: paused; }
+        .cd-player::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 22px; height: 22px; background: var(--dark-pink); border-radius: 50%; border: 2px solid white; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .cd-photo-left { position: absolute; left: 25px; z-index: 2; width: 110px; }
 
-        /* Letter Box */
-        .letter-content { background: #fffdf2; color: #333; padding: 25px; border-radius: 5px; width: 100%; text-align: left; line-height: 1.6; font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); box-sizing: border-box; }
-        
+        .btn-next { background: white; color: var(--dark-pink); border: none; padding: 12px 40px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 30px; }
         #flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 999; }
         .blink { animation: flash 0.4s ease-out; }
         @keyframes flash { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
-
-        .btn-next { background: white; color: var(--red); border: none; padding: 12px 40px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 30px; margin-bottom: 20px; }
-        
-        .bday-text { font-family: 'Dancing Script', cursive; font-size: 45px; margin: 0; line-height: 1.1; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
 
 <div id="flash"></div>
+<div class="emoji-wrap" id="emojiContainer"></div>
 
 <div class="screen active" id="pg1">
-    <div class="polaroid"><img src="5photo.jpeg"><p>U & Me</p></div>
-    <h3 style="font-weight: 300;">Entre a passcode</h3>
-    <div class="pin-dots" id="dots"></div>
-    <div class="keypad">
-        <div class="key" onclick="addPin(1)">1</div><div class="key" onclick="addPin(2)">2</div><div class="key" onclick="addPin(3)">3</div>
-        <div class="key" onclick="addPin(4)">4</div><div class="key" onclick="addPin(5)">5</div><div class="key" onclick="addPin(6)">6</div>
-        <div class="key" onclick="addPin(7)">7</div><div class="key" onclick="addPin(8)">8</div><div class="key" onclick="addPin(9)">9</div>
-        <div></div><div class="key" onclick="addPin(0)">0</div><div class="key" onclick="delPin()">✕</div>
+    <div class="login-container">
+        <div class="polaroid"><img src="5photo.jpeg"><p>U & Me 💚</p></div>
+        <div class="keypad-side">
+            <h3 style="margin: 0; font-weight: 300;">Entre a passcode</h3>
+            <div class="pin-dots" id="dots"></div>
+            <div class="keypad">
+                <div class="key" onclick="addPin(1)">1</div><div class="key" onclick="addPin(2)">2</div><div class="key" onclick="addPin(3)">3</div>
+                <div class="key" onclick="addPin(4)">4</div><div class="key" onclick="addPin(5)">5</div><div class="key" onclick="addPin(6)">6</div>
+                <div class="key" onclick="addPin(7)">7</div><div class="key" onclick="addPin(8)">8</div><div class="key" onclick="addPin(9)">9</div>
+                <div></div><div class="key" onclick="addPin(0)">0</div><div class="key" onclick="delPin()">✕</div>
+            </div>
+            <p style="font-size: 10px; margin-top: 10px;">Hint: Its our fav code 🌺</p>
+        </div>
     </div>
-    <p style="font-size: 11px;">Hint: Its our fav code</p>
     <button class="btn-next" onclick="verifyPin()">NEXT</button>
 </div>
 
 <div class="screen" id="pg2">
-    <h2 style="font-family: 'Dancing Script';">Wow, that looks good on u wivessy!</h2>
-    <p>Now get ready to take a picture !!</p>
-    <div class="polaroid" style="background: #eee; transform: rotate(0deg);"><img src="instax camera.jpeg"></div>
+    <h2 style="font-family: 'Dancing Script'; font-size: 32px;">Wow, that looks good on u wivessy! 🌺</h2>
+    <div class="polaroid" style="background: #eee; transform: rotate(0deg); width: 220px; margin-top: 20px;"><img src="instax_camera.jpg"></div>
     <button class="btn-next" onclick="capture()">See the picture</button>
 </div>
 
 <div class="screen" id="pg3">
     <h3>Who is this beautiful person? 😍</h3>
-    <div class="polaroid" style="transform: rotate(3deg); width: 220px;"><img src="2photo.jepg"><p>wivessy luv</p></div>
+    <div class="polaroid" style="transform: rotate(3deg); width: 220px;"><img src="1photo.jpeg"><p>wivessy luv 💚</p></div>
     <button class="btn-next" onclick="go(4)">NEXT</button>
 </div>
 
 <div class="screen" id="pg4">
-    <h2>Gifts for u 🎁</h2>
-    <div style="font-size: 50px; display: flex; gap: 25px; margin-top: 30px;">
-        <span style="cursor:pointer" onclick="go(5)">✉️</span>
-        <span style="cursor:pointer" onclick="go(5)">📷</span>
-        <span style="cursor:pointer" onclick="go(6)">🎵</span>
+    <h2>Gifts for u 🎁 🌺</h2>
+    <div class="gift-float-wrap">
+        <div class="floating-gift" style="animation-delay: 0s;" onclick="go(5)">✉️</div>
+        <div class="floating-gift" style="animation-delay: 0.5s;" onclick="go(5)">📷</div>
+        <div class="floating-gift" style="animation-delay: 1s;" onclick="go(6)">🎵</div>
     </div>
 </div>
 
 <div class="screen" id="pg5">
-    <div class="letter-content">
-        <h4 style="margin: 0; color: var(--red); font-family: 'Dancing Script'; font-size: 24px;">My Dear wivessy,</h4>
-        <p>u r the girl who proved soulmates are real. A person with whom u meet and feel an immediate connection so strong that u r drawn to them in a way u have never experienced before. wivessy, this connection develops over time, and u experience a love so deep, strong, and complex that it begins to blossom forever. i love u more than words can express.</p>
-        <p style="text-align: right; margin: 0;">- Love, Swastik</p>
+    <div class="canva-letter">
+        <p style="font-size: 10px; margin: 0; opacity: 0.7;">I love you more than words can express.</p>
+        <div class="canva-header">
+            <h1 class="canva-title">HAPPY<br>BIRTHDAY,<br>MY LOVE.</h1>
+            <img src="5photo.jpeg">
+        </div>
+        <div class="letter-text">
+            <p><strong>My Dear wivessy, 🌺</strong></p>
+            <p>I witness my life with someone who I met at 17 and want to stay with forever. You are the girl who proved soulmates are real. A person with whom I feel an immediate connection so strong that I am drawn to you in a way I have never experienced before. I love you more than words can express. 💚</p>
+            <p style="text-align: right; margin-top: 10px; font-family: 'Dancing Script'; font-size: 18px;">- Love, Swastik</p>
+        </div>
     </div>
-    <div class="polaroid" style="width: 120px; margin-top: 20px;"><img src="5photo.jpeg"></div>
     <button class="btn-next" onclick="go(6)">NEXT</button>
 </div>
 
 <div class="screen" id="pg6">
-    <h1 class="bday-text">HAPPY BIRTHDAY, <br>MY LUV</h1>
-    <p style="font-size: 13px; margin: 10px 0;">wivessy luv for u always like the song</p>
+    <h1 style="font-family: 'Dancing Script'; font-size: 45px; margin: 0;">OUR SONG 🎵</h1>
+    <p style="font-size: 13px;">wivessy luv for u always like the song 💚</p>
     
-    <div class="music-container">
-        <div class="polaroid" style="width: 110px; margin-right: -20px; z-index: 2; transform: rotate(-5deg);"><img src="3photo.png"></div>
-        <div class="cd-player" id="cd"></div>
+    <div class="music-box">
+        <div class="polaroid cd-photo-left"><img src="3photo.png"></div>
+        <div class="cd-wrapper" id="cdWrapper">
+            <div class="cd-player" id="cd"></div>
+        </div>
     </div>
 
-    <div class="polaroid" style="width: 110px; margin-top: 10px; transform: rotate(5deg);"><img src="4photo.png"></div>
+    <div class="polaroid" style="width: 100px; margin-top: 10px; transform: rotate(5deg);"><img src="4photo.png"></div>
     
     <audio id="song" src="music.mp3" loop></audio>
     <button class="btn-next" id="playBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
 </div>
 
 <script>
+    const emojis = ['🐋', '🦌', '💚', '🌺'];
+    function createEmoji() {
+        const emoji = document.createElement('div');
+        emoji.className = 'floating-emoji';
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + 'vw';
+        emoji.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.getElementById('emojiContainer').appendChild(emoji);
+        setTimeout(() => emoji.remove(), 10000);
+    }
+    setInterval(createEmoji, 500);
+
     let pin = "";
     function addPin(n) { if(pin.length<4){ pin+=n; document.getElementById('dots').innerText="•".repeat(pin.length); } }
     function delPin() { pin=""; document.getElementById('dots').innerText=""; }
     function verifyPin() { if(pin==="2008") go(2); else { alert("Wrong!"); delPin(); } }
+    function go(n) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById('pg'+n).classList.add('active'); window.scrollTo(0,0); }
+    function capture() { document.getElementById('flash').classList.add('blink'); setTimeout(() => { document.getElementById('flash').classList.remove('blink'); go(3); }, 400); }
     
-    function go(n) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('pg'+n).classList.add('active');
-        window.scrollTo(0,0); // Page change huda mathi pugne
-    }
-
-    function capture() {
-        document.getElementById('flash').classList.add('blink');
-        setTimeout(() => { document.getElementById('flash').classList.remove('blink'); go(3); }, 400);
-    }
-
     function toggleMusic() {
         const s = document.getElementById('song');
         const cd = document.getElementById('cd');
+        const wrapper = document.getElementById('cdWrapper');
         if(s.paused) {
             s.play();
             cd.style.animationPlayState = 'running';
+            wrapper.style.marginLeft = "70px"; // Slides out
             document.getElementById('playBtn').innerText = "❤️ Playing...";
         } else {
             s.pause();
             cd.style.animationPlayState = 'paused';
+            wrapper.style.marginLeft = "-30px"; // Slides in
             document.getElementById('playBtn').innerText = "🎵 Play Music";
         }
     }
