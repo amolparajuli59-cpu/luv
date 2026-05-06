@@ -7,10 +7,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&family=Cinzel:wght@700&display=swap');
         
-        :root { --dark-pink: #c9184a; --white: #ffffff; }
+        :root { 
+            --pink-bg: #ff4d6d; /* Perfect Pink */
+            --white: #ffffff; 
+        }
         
         body { 
-            background-color: var(--dark-pink); 
+            background-color: var(--pink-bg); 
             color: var(--white); 
             font-family: 'Poppins', sans-serif; 
             margin: 0; 
@@ -22,55 +25,58 @@
             position: relative; 
         }
         
-        /* BIGGER Floating Background Emojis */
+        /* Floating Emojis Background */
         .emoji-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .floating-emoji { position: absolute; bottom: -100px; font-size: 50px; animation: floatUp 7s linear infinite; opacity: 0.5; }
+        .floating-emoji { position: absolute; bottom: -100px; font-size: 45px; animation: floatUp 7s linear infinite; opacity: 0.6; }
         @keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
 
-        .screen { display: none; width: 100%; max-width: 800px; flex-direction: column; align-items: center; text-align: center; padding: 60px 20px; box-sizing: border-box; animation: fadeIn 0.5s ease; position: relative; z-index: 1; }
+        .screen { display: none; width: 100%; max-width: 800px; flex-direction: column; align-items: center; text-align: center; padding: 50px 20px; box-sizing: border-box; animation: fadeIn 0.5s ease; position: relative; z-index: 1; }
         .active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* GIANT Login Layout */
-        .login-container { display: flex; align-items: center; justify-content: center; gap: 50px; width: 100%; flex-wrap: wrap; margin-top: 40px; }
-        .polaroid { background: white; padding: 15px 15px 60px 15px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); transform: rotate(-3deg); width: 320px; }
-        .polaroid img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
-        .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 20px 0 0 0; font-size: 28px; }
+        /* Polaroid Styles */
+        .polaroid { background: white; padding: 15px 15px 60px 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); transform: rotate(-3deg); width: 320px; }
+        .polaroid img { width: 100%; height: auto; display: block; border: 1px solid #eee; }
+        .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 15px 0 0 0; font-size: 26px; }
 
-        .keypad-side { display: flex; flex-direction: column; align-items: center; }
-        .pin-dots { font-size: 50px; letter-spacing: 15px; margin-bottom: 20px; color: #ffb3b3; height: 60px; font-weight: bold; }
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .key { width: 85px; height: 85px; background: rgba(255,255,255,0.2); border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .key:active { background: white; color: var(--dark-pink); }
+        /* Login Layout */
+        .login-container { display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; flex-wrap: wrap; margin-top: 30px; }
+        .pin-dots { font-size: 50px; letter-spacing: 12px; margin-bottom: 15px; color: #fff; height: 60px; font-weight: bold; }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .key { width: 80px; height: 80px; background: rgba(255,255,255,0.3); border: 2px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .key:active { background: white; color: var(--pink-bg); }
 
-        /* GIANT Floating Gifts */
-        .gift-float-wrap { display: flex; gap: 70px; margin-top: 80px; }
-        .floating-gift { font-size: 120px; cursor: pointer; animation: sideFloat 3s ease-in-out infinite alternate; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4)); }
+        /* Floating Gifts */
+        .gift-float-wrap { display: flex; gap: 100px; margin-top: 80px; }
+        .floating-gift { font-size: 150px; cursor: pointer; animation: sideFloat 3s ease-in-out infinite alternate; }
         @keyframes sideFloat { from { transform: translateY(0); } to { transform: translateY(-40px); } }
 
-        /* GIANT Canva Style Letter */
-        .canva-letter { background: #fdfdfd; color: #222; padding: 50px; border-radius: 10px; width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.5); position: relative; text-align: left; }
-        .canva-header { display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-bottom: 30px; }
-        .canva-title { font-family: 'Cinzel', serif; font-size: 60px; line-height: 0.85; color: #111; flex: 1; margin: 0; }
-        .canva-header img { width: 250px; border: 12px solid white; box-shadow: 10px 20px 40px rgba(0,0,0,0.3); transform: rotate(4deg); }
-        .letter-text { font-size: 24px; line-height: 1.8; color: #333; border-top: 4px solid #eee; padding-top: 30px; font-weight: 400; }
+        /* Canva Letter Box */
+        .canva-letter { background: #fdfdfd; color: #222; padding: 45px; border-radius: 8px; width: 100%; box-shadow: 0 25px 50px rgba(0,0,0,0.4); text-align: left; }
+        .canva-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .canva-title { font-family: 'Cinzel', serif; font-size: 60px; line-height: 0.85; color: #111; margin: 0; }
+        .canva-header img { width: 240px; border: 12px solid white; box-shadow: 5px 15px 30px rgba(0,0,0,0.2); transform: rotate(4deg); }
+        .letter-text { font-size: 24px; line-height: 1.8; color: #333; border-top: 4px solid #eee; padding-top: 30px; }
 
-        /* GIANT CD Music Player */
-        .music-box { display: flex; align-items: center; justify-content: center; width: 100%; margin: 60px 0; position: relative; height: 350px; }
-        .cd-wrapper { position: relative; width: 300px; height: 300px; margin-left: -80px; z-index: 1; transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .cd-player { width: 100%; height: 100%; background: radial-gradient(circle, #222 20%, #111 100%); border-radius: 50%; border: 12px solid #333; position: relative; animation: spin 3s linear infinite; animation-play-state: paused; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
-        .cd-player::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: var(--dark-pink); border-radius: 50%; border: 5px solid white; }
+        /* EXTRA LARGE CD Player */
+        .music-box { display: flex; align-items: center; justify-content: center; width: 100%; margin: 60px 0; position: relative; height: 400px; }
+        .cd-wrapper { position: relative; width: 350px; height: 350px; margin-left: -100px; z-index: 1; transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .cd-player { width: 100%; height: 100%; background: radial-gradient(circle, #333 20%, #000 100%); border-radius: 50%; border: 15px solid #222; position: relative; animation: spin 3s linear infinite; animation-play-state: paused; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
+        .cd-player::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: var(--pink-bg); border-radius: 50%; border: 5px solid white; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .cd-photo-left { position: absolute; left: 30px; z-index: 2; width: 280px; }
+        .cd-photo-left { position: absolute; left: 20px; z-index: 2; width: 320px; }
 
-        .btn-next { background: white; color: var(--dark-pink); border: none; padding: 25px 80px; border-radius: 60px; font-weight: bold; cursor: pointer; margin-top: 60px; font-size: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); transition: 0.3s; }
-        .btn-next:hover { transform: scale(1.1); }
+        /* Buttons */
+        .btn-container { display: flex; gap: 30px; margin-top: 50px; }
+        .btn { background: white; color: var(--pink-bg); border: none; padding: 20px 60px; border-radius: 60px; font-weight: bold; cursor: pointer; font-size: 26px; box-shadow: 0 15px 30px rgba(0,0,0,0.2); transition: 0.3s; }
+        .btn-back { background: rgba(0,0,0,0.2); color: white; border: 2px solid white; }
+        .btn:hover { transform: scale(1.05); }
+
+        .big-wish { font-family: 'Dancing Script', cursive; font-size: 80px; margin: 0; text-shadow: 3px 3px 10px rgba(0,0,0,0.3); }
         
         #flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 999; }
         .blink { animation: flash 0.4s ease-out; }
         @keyframes flash { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
-
-        .big-wish { font-family: 'Dancing Script', cursive; font-size: 80px; margin: 0; text-shadow: 4px 4px 10px rgba(0,0,0,0.4); }
     </style>
 </head>
 <body>
@@ -93,61 +99,72 @@
             <p style="font-size: 20px; margin-top: 30px;">Hint: Its our fav code 🌺</p>
         </div>
     </div>
-    <button class="btn-next" onclick="verifyPin()">NEXT</button>
+    <button class="btn" style="margin-top: 50px;" onclick="verifyPin()">NEXT</button>
 </div>
 
 <div class="screen" id="pg2">
     <h2 style="font-family: 'Dancing Script'; font-size: 65px;">Wow, that looks good on u wivessy! 🌺</h2>
-    <div class="polaroid" style="background: #eee; transform: rotate(0deg); width: 450px; margin-top: 40px;"><img src="instax cmaera.jpeg"></div>
-    <button class="btn-next" onclick="capture()">See the picture</button>
+    <div class="polaroid" style="background: #eee; transform: rotate(0deg); width: 450px; margin-top: 40px;"><img src="camera.jpeg"></div>
+    <div class="btn-container">
+        <button class="btn btn-back" onclick="go(1)">BACK</button>
+        <button class="btn" onclick="capture()">CAPTURE</button>
+    </div>
 </div>
 
 <div class="screen" id="pg3">
     <h2 style="font-size: 50px;">Who is this beautiful person? 😍</h2>
-    <div class="polaroid" style="transform: rotate(3deg); width: 480px; margin-top: 40px;"><img src="1photo.jpeg"><p>wivessy luv 💚</p></div>
-    <button class="btn-next" onclick="go(4)">NEXT</button>
+    <div class="polaroid" style="transform: rotate(3deg); width: 500px;"><img src="1photo.jpeg"><p>wivessy luv 💚</p></div>
+    <div class="btn-container">
+        <button class="btn btn-back" onclick="go(2)">BACK</button>
+        <button class="btn" onclick="go(4)">NEXT</button>
+    </div>
 </div>
 
 <div class="screen" id="pg4">
-    <h2 style="font-size: 60px;">Gifts for u 🎁 🌺</h2>
+    <h2 style="font-size: 65px;">Gifts for u 🎁 🌺</h2>
     <div class="gift-float-wrap">
         <div class="floating-gift" onclick="go(5)">✉️</div>
-        <div class="floating-gift" onclick="go(5)">📷</div>
         <div class="floating-gift" onclick="go(6)">🎵</div>
+    </div>
+    <div class="btn-container" style="margin-top: 100px;">
+        <button class="btn btn-back" onclick="go(3)">BACK</button>
     </div>
 </div>
 
 <div class="screen" id="pg5">
     <div class="canva-letter">
-        <p style="font-size: 20px; margin: 0; opacity: 0.7;">I love u more than words can express.</p>
+        <p style="font-size: 18px; margin-bottom: 10px; opacity: 0.7;">I love u more than words can express.</p>
         <div class="canva-header">
             <h1 class="canva-title">HAPPY<br>BIRTHDAY,<br>MY LOVE.</h1>
             <img src="5photo.jpeg">
         </div>
         <div class="letter-text">
             <p><strong>My Dear wivessy, 🌺</strong></p>
-            <p>i witness my life with someone who i met in 17 and want stay forever. u r the girl who proved soulmates are real. A person with whom i meet and feel an immediate connection so strong that i am drawn to u in a way i have never experienced before. this connection develops over time, and i experience a love so deep, strong, and complex that it begins to blossom forever. i love u more than words can express. 💚</p>
-            <p style="text-align: right; margin-top: 40px; font-family: 'Dancing Script'; font-size: 50px;">- Love, Swastik</p>
+            <p>i witness my life with someone who i met in 17 and want stay forever. u r the girl who proved soulmates are real. A person with whom i meet and feel an immediate connection so strong that i am drawn to u in a way i have never experienced before. I love u more than words can express. 💚</p>
+            <p style="text-align: right; margin-top: 30px; font-family: 'Dancing Script'; font-size: 40px;">- Love, Swastik</p>
         </div>
     </div>
-    <button class="btn-next" onclick="go(6)">NEXT</button>
+    <div class="btn-container">
+        <button class="btn btn-back" onclick="go(4)">BACK</button>
+        <button class="btn" onclick="go(6)">NEXT</button>
+    </div>
 </div>
 
 <div class="screen" id="pg6">
     <h1 class="big-wish">OUR SONG 🎵</h1>
-    <p style="font-size: 28px; margin: 20px 0;">wivessy luv for u always like the song 💚</p>
-    
+    <p style="font-size: 26px; margin: 20px 0;">wivessy luv for u always like the song 💚</p>
     <div class="music-box">
-        <div class="polaroid cd-photo-left"><img src="3photo.PNG"></div>
+        <div class="polaroid cd-photo-left"><img src="3photo.png"></div>
         <div class="cd-wrapper" id="cdWrapper">
             <div class="cd-player" id="cd"></div>
         </div>
     </div>
-
-    <div class="polaroid" style="width: 250px; margin-top: 40px; transform: rotate(5deg);"><img src="4photo.PNG"></div>
-    
+    <div class="polaroid" style="width: 240px; transform: rotate(5deg); margin-top: 20px;"><img src="4photo.png"></div>
     <audio id="song" src="music.mp3" loop></audio>
-    <button class="btn-next" id="playBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
+    <div class="btn-container">
+        <button class="btn btn-back" onclick="go(4)">BACK</button>
+        <button class="btn" id="playBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
+    </div>
 </div>
 
 <script>
@@ -157,7 +174,7 @@
         emoji.className = 'floating-emoji';
         emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
         emoji.style.left = Math.random() * 100 + 'vw';
-        emoji.style.animationDuration = (Math.random() * 5 + 3) + 's';
+        emoji.style.animationDuration = (Math.random() * 5 + 4) + 's';
         document.getElementById('emojiContainer').appendChild(emoji);
         setTimeout(() => emoji.remove(), 8000);
     }
@@ -166,7 +183,7 @@
     let pin = "";
     function addPin(n) { if(pin.length<4){ pin+=n; document.getElementById('dots').innerText="•".repeat(pin.length); } }
     function delPin() { pin=""; document.getElementById('dots').innerText=""; }
-    function verifyPin() { if(pin==="2008") go(2); else { alert("Wrong!"); delPin(); } }
+    function verifyPin() { if(pin==="2008") go(2); else { alert("Wrong Passcode!"); delPin(); } }
     
     function go(n) { 
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); 
@@ -184,14 +201,14 @@
         const cd = document.getElementById('cd');
         const wrapper = document.getElementById('cdWrapper');
         if(s.paused) {
-            s.play();
+            s.play().catch(e => alert("Please interact with the page first to play music!"));
             cd.style.animationPlayState = 'running';
-            wrapper.style.marginLeft = "150px"; // CD slides out mazzale
+            wrapper.style.marginLeft = "220px"; // Roll out mazzale
             document.getElementById('playBtn').innerText = "❤️ Playing...";
         } else {
             s.pause();
             cd.style.animationPlayState = 'paused';
-            wrapper.style.marginLeft = "-80px"; // Slides back in
+            wrapper.style.marginLeft = "-100px"; 
             document.getElementById('playBtn').innerText = "🎵 Play Our Song";
         }
     }
