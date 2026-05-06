@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise | wivessy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap');
+
+        :root { --red: #e63946; --white: #ffffff; }
+        body { background-color: var(--red); color: var(--white); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+
+        .screen { display: none; width: 100%; max-width: 400px; flex-direction: column; align-items: center; text-align: center; animation: fadeIn 0.5s ease; }
+        .active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Polaroid Style */
+        .polaroid { background: white; padding: 12px 12px 35px 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); transform: rotate(-2deg); margin-bottom: 20px; width: 220px; }
+        .polaroid img { width: 100%; height: auto; border: 1px solid #eee; }
+        .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 10px 0 0 0; font-size: 18px; }
+
+        /* Keypad */
+        .pin-dots { font-size: 30px; letter-spacing: 15px; margin-bottom: 15px; color: #ffb3b3; height: 40px; }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .key { width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1.5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; cursor: pointer; }
+        .key:active { background: white; color: var(--red); }
+
+        /* Camera Flash */
+        #flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 999; }
+        .flash-on { animation: flashEffect 0.4s ease-out; }
+        @keyframes flashEffect { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* Gift Selection */
+        .gifts { display: flex; gap: 25px; margin-top: 30px; }
+        .gift-item { font-size: 45px; cursor: pointer; transition: transform 0.3s; }
+        .gift-item:hover { transform: scale(1.2); }
+
+        /* Letter Styling */
+        .letter-content { background: #fffdf2; color: #444; padding: 30px; border-radius: 2px; width: 85%; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-align: left; line-height: 1.6; }
+
+        .btn-next { background: white; color: var(--red); border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 25px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div id="flash"></div>
+
+<!-- PAGE 1: Login -->
+<div class="screen active" id="pg1">
+    <div class="polaroid"><img src="1photo.jpeg"><p>U & Me</p></div>
+    <h2 style="font-weight: 300;">Entre a passcode</h2>
+    <div class="pin-dots" id="dots"></div>
+    <div class="keypad">
+        <div class="key" onclick="addPin(1)">1</div><div class="key" onclick="addPin(2)">2</div><div class="key" onclick="addPin(3)">3</div>
+        <div class="key" onclick="addPin(4)">4</div><div class="key" onclick="addPin(5)">5</div><div class="key" onclick="addPin(6)">6</div>
+        <div class="key" onclick="addPin(7)">7</div><div class="key" onclick="addPin(8)">8</div><div class="key" onclick="addPin(9)">9</div>
+        <div style="opacity: 0;"></div><div class="key" onclick="addPin(0)">0</div><div class="key" onclick="delPin()">✕</div>
+    </div>
+    <p style="margin-top: 20px; font-size: 13px; opacity: 0.8;">Hint: It's our special year/date</p>
+    <button class="btn-next" onclick="verifyPin()">NEXT</button>
+</div>
+
+<!-- PAGE 2: Camera -->
+<div class="screen" id="pg2">
+    <h1 style="font-family: 'Dancing Script';">Wow, that looks good on u wivessy!</h1>
+    <p>Now get ready to take a picture !!</p>
+    <div class="polaroid" style="transform: rotate(0deg);"><img src="instax camera.jpeg"></div>
+    <button class="btn-next" onclick="capture()">See the picture</button>
+</div>
+
+<!-- PAGE 3: The Result -->
+<div class="screen" id="pg3">
+    <h3>Who is this beautiful person?</h3>
+    <div class="polaroid" style="transform: rotate(2deg);"><img src="2photo.jepg"><p>Beautiful Heart</p></div>
+    <button class="btn-next" onclick="go(4)">NEXT</button>
+</div>
+
+<!-- PAGE 4: Selection -->
+<div class="screen" id="pg4">
+    <h2>Gifts for u</h2>
+    <p>Click any of these</p>
+    <div class="gifts">
+        <div class="gift-item" onclick="go(5)">✉️</div>
+        <div class="gift-item" onclick="go(5)">📷</div>
+        <div class="gift-item" onclick="go(5)">🎵</div>
+    </div>
+</div>
+
+<!-- PAGE 5: Letter -->
+<div class="screen" id="pg5">
+    <div class="letter-content">
+        <h3 style="margin-top: 0; color: var(--red);">To My Dear wivessy,</h3>
+        <p>"A person with whom u have an immediate connection the moment u meet... u proved that soulmates are real."</p>
+        <p style="text-align: right; font-weight: 600;">- Love, Swastik</p>
+    </div>
+    <button class="btn-next" onclick="go(6)">NEXT</button>
+</div>
+
+<!-- PAGE 6: Final -->
+<div class="screen" id="pg6">
+    <h1 style="font-size: 40px; margin-bottom: 0;">HAPPY BIRTHDAY!</h1>
+    <p style="margin-top: 5px;">May our love flourish forever.</p>
+    <div class="polaroid" style="transform: rotate(-3deg) scale(1.1);"><img src="3photo.PNG"><p>Forever Together</p></div>
+    <div class="polaroid" style="transform: rotate(4deg); width: 150px; margin-top: -50px;"><img src="4photo.PNG"></div>
+    <button class="btn-next" id="playBtn" onclick="playMusic()">🎵 Play Our Song</button>
+    <audio id="bdaySong" src="music.mp3"></audio>
+</div>
+
+<script>
+    let inputPin = "";
+    const correctPin = "2008"; // Tapai ko birth year
+
+    function addPin(num) {
+        if(inputPin.length < 4) {
+            inputPin += num;
+            document.getElementById('dots').innerText = "•".repeat(inputPin.length);
+        }
+    }
+
+    function delPin() { inputPin = ""; document.getElementById('dots').innerText = ""; }
+
+    function verifyPin() {
+        if(inputPin === correctPin) go(2);
+        else { alert("Wrong Passcode!"); delPin(); }
+    }
+
+    function go(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('pg' + id).classList.add('active');
+    }
+
+    function capture() {
+        document.getElementById('flash').classList.add('flash-on');
+        setTimeout(() => {
+            document.getElementById('flash').classList.remove('flash-on');
+            go(3);
+        }, 400);
+    }
+
+    function playMusic() {
+        let audio = document.getElementById('bdaySong');
+        audio.play();
+        document.getElementById('playBtn').innerText = "❤️ Playing...";
+    }
+</script>
+
+</body>
+</html>
