@@ -3,133 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Surprise | wivessy</title>
+    <title>For wivessy ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
 
-        :root { --red: #e63946; --white: #ffffff; }
+        :root { --red: #d90429; --white: #ffffff; }
         body { background-color: var(--red); color: var(--white); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
 
         .screen { display: none; width: 100%; max-width: 400px; flex-direction: column; align-items: center; text-align: center; animation: fadeIn 0.5s ease; }
         .active { display: flex; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Polaroid Style */
-        .polaroid { background: white; padding: 12px 12px 35px 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); transform: rotate(-2deg); margin-bottom: 20px; width: 220px; }
-        .polaroid img { width: 100%; height: auto; border: 1px solid #eee; display: block; }
-        .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 10px 0 0 0; font-size: 18px; }
+        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transform: rotate(-2deg); margin-bottom: 20px; width: 180px; }
+        .polaroid img { width: 100%; height: auto; display: block; }
+        .polaroid p { color: #333; font-family: 'Dancing Script', cursive; margin: 5px 0 0 0; font-size: 14px; }
 
         /* Keypad */
-        .pin-dots { font-size: 30px; letter-spacing: 15px; margin-bottom: 15px; color: #ffb3b3; height: 40px; }
-        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .key { width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1.5px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; cursor: pointer; }
-        .key:active { background: white; color: var(--red); }
+        .pin-dots { font-size: 25px; letter-spacing: 10px; margin-bottom: 10px; color: #ffb3b3; height: 30px; }
+        .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .key { width: 55px; height: 55px; background: rgba(255,255,255,0.15); border: 1px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; }
 
-        /* Camera Flash */
-        #flash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 999; }
-        .flash-on { animation: flashEffect 0.4s ease-out; }
-        @keyframes flashEffect { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+        /* CD & Music Animation */
+        .music-container { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 20px; position: relative; left: 20px; }
+        .cd-player { width: 120px; height: 120px; background: url('music.mp3'); /* Just placeholder */ border-radius: 50%; border: 5px solid #333; position: relative; animation: spin 3s linear infinite; animation-play-state: paused; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .cd-player::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 25px; height: 25px; background: var(--red); border-radius: 50%; border: 2px solid white; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Gift Selection */
-        .gifts { display: flex; gap: 25px; margin-top: 30px; }
-        .gift-item { font-size: 45px; cursor: pointer; transition: transform 0.3s; }
-        .gift-item:hover { transform: scale(1.2); }
+        /* Letter Box */
+        .letter-content { background: #fffdf2; color: #333; padding: 25px; border-radius: 5px; width: 85%; text-align: left; line-height: 1.5; font-size: 14px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        .flash-effect { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; opacity: 0; pointer-events: none; z-index: 999; }
+        .blink { animation: flash 0.4s ease-out; }
+        @keyframes flash { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 
-        .letter-content { background: #fffdf2; color: #444; padding: 30px; border-radius: 2px; width: 85%; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-align: left; line-height: 1.6; }
-        .btn-next { background: white; color: var(--red); border: none; padding: 12px 40px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 25px; font-size: 16px; }
+        .btn-next { background: white; color: var(--red); border: none; padding: 10px 35px; border-radius: 25px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        
+        /* Large Birthday Text */
+        .bday-text { font-family: 'Dancing Script', cursive; font-size: 50px; margin: 0; line-height: 1; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
 
-<div id="flash"></div>
+<div id="flash" class="flash-effect"></div>
 
 <div class="screen active" id="pg1">
-    <div class="polaroid"><img src="1photo.jpeg"><p>U & Me</p></div>
-    <h2 style="font-weight: 300;">Entre a passcode</h2>
+    <div class="polaroid"><img src="5photo.jpeg"><p>U & Me</p></div>
+    <h3 style="font-weight: 300; margin-bottom: 5px;">Entre a passcode</h3>
     <div class="pin-dots" id="dots"></div>
     <div class="keypad">
         <div class="key" onclick="addPin(1)">1</div><div class="key" onclick="addPin(2)">2</div><div class="key" onclick="addPin(3)">3</div>
         <div class="key" onclick="addPin(4)">4</div><div class="key" onclick="addPin(5)">5</div><div class="key" onclick="addPin(6)">6</div>
         <div class="key" onclick="addPin(7)">7</div><div class="key" onclick="addPin(8)">8</div><div class="key" onclick="addPin(9)">9</div>
-        <div style="opacity: 0;"></div><div class="key" onclick="addPin(0)">0</div><div class="key" onclick="delPin()">✕</div>
+        <div></div><div class="key" onclick="addPin(0)">0</div><div class="key" onclick="delPin()">✕</div>
     </div>
-    <p style="margin-top: 20px; font-size: 13px; opacity: 0.8;">Hint: It's our special year/date</p>
+    <p style="font-size: 11px; margin-top: 10px;">Hint: Its our fav code</p>
     <button class="btn-next" onclick="verifyPin()">NEXT</button>
 </div>
 
 <div class="screen" id="pg2">
-    <h1 style="font-family: 'Dancing Script';">Wow, that looks good on u wivessy!</h1>
+    <h2 style="font-family: 'Dancing Script';">Wow, that looks good on u wivessy!</h2>
     <p>Now get ready to take a picture !!</p>
-    <div class="polaroid" style="transform: rotate(0deg);"><img src="instax camera.jpeg"></div>
+    <div class="polaroid" style="background: #eee;"><img src="instax camera.jpeg"></div>
     <button class="btn-next" onclick="capture()">See the picture</button>
 </div>
 
 <div class="screen" id="pg3">
-    <h3>Who is this beautiful person?</h3>
-    <div class="polaroid" style="transform: rotate(2deg);"><img src="2photo.jepg"><p>Beautiful Heart</p></div>
+    <h3>Who is this beautiful person? 😍</h3>
+    <div class="polaroid" style="transform: rotate(3deg); width: 200px;"><img src="2photo.jepg"><p>wivessy luv</p></div>
     <button class="btn-next" onclick="go(4)">NEXT</button>
 </div>
 
 <div class="screen" id="pg4">
-    <h2>Gifts for u</h2>
-    <p>Click any of these</p>
-    <div class="gifts">
-        <div class="gift-item" onclick="go(5)">✉️</div>
-        <div class="gift-item" onclick="go(5)">📷</div>
-        <div class="gift-item" onclick="go(5)">🎵</div>
+    <h2>Gifts for u 🎁</h2>
+    <div style="font-size: 45px; display: flex; gap: 20px; margin-top: 20px;">
+        <span style="cursor:pointer" onclick="go(5)">✉️</span>
+        <span style="cursor:pointer" onclick="go(5)">📷</span>
+        <span style="cursor:pointer" onclick="go(6)">🎵</span>
     </div>
 </div>
 
 <div class="screen" id="pg5">
     <div class="letter-content">
-        <h3 style="margin-top: 0; color: var(--red);">To My Dear wivessy,</h3>
-        <p>"A person with whom u have an immediate connection the moment u meet... u proved that soulmates are real."</p>
-        <p style="text-align: right; font-weight: 600;">- Love, Swastik</p>
+        <h4 style="margin: 0; color: var(--red); font-family: 'Dancing Script'; font-size: 22px;">My Dear wivessy,</h4>
+        <p>u r the girl who proved soulmates are real. A person with whom u meet and feel an immediate connection so strong that u r drawn to them in a way u have never experienced before. wivessy, this connection develops over time, and u experience a love so deep, strong, and complex that it begins to blossom forever. i love u more than words can express.</p>
+        <p style="text-align: right; margin: 0;">- Love, Swastik</p>
     </div>
-    <div style="margin-top: 10px;">
-        <img src="whale.PNG" style="width: 80px; border-radius: 10px;">
-    </div>
+    <div class="polaroid" style="width: 100px; margin-top: 10px;"><img src="5photo.jpeg"></div>
     <button class="btn-next" onclick="go(6)">NEXT</button>
 </div>
 
 <div class="screen" id="pg6">
-    <h1 style="font-size: 32px; margin-bottom: 0;">HAPPY BIRTHDAY!</h1>
-    <div class="polaroid" style="transform: rotate(-3deg); width: 180px;"><img src="3photo.png"><p>Forever Together</p></div>
-    <div class="polaroid" style="transform: rotate(4deg); width: 180px; margin-top: -60px;"><img src="4photo.png"></div>
-    <button class="btn-next" id="playBtn" onclick="playMusic()">🎵 Play Our Song</button>
-    <audio id="bdaySong" src="music.mp3"></audio>
+    <h1 class="bday-text">HAPPY BIRTHDAY, <br>MY LUV</h1>
+    <p style="font-size: 12px;">wivessy luv for u always like the song</p>
+    
+    <div class="music-container">
+        <div class="polaroid" style="width: 100px; margin-right: -30px; z-index: 2; transform: rotate(-5deg);"><img src="3photo.png"></div>
+        
+        <div class="cd-player" id="cd"></div>
+    </div>
+
+    <div class="polaroid" style="width: 100px; margin-top: -30px; transform: rotate(5deg);"><img src="4photo.png"></div>
+    
+    <audio id="song" src="music.mp3" loop></audio>
+    <button class="btn-next" id="playBtn" onclick="toggleMusic()">🎵 Play Our Song</button>
 </div>
 
 <script>
-    let inputPin = "";
-    const correctPin = "2008"; 
-
-    function addPin(num) {
-        if(inputPin.length < 4) {
-            inputPin += num;
-            document.getElementById('dots').innerText = "•".repeat(inputPin.length);
-        }
-    }
-    function delPin() { inputPin = ""; document.getElementById('dots').innerText = ""; }
-    function verifyPin() {
-        if(inputPin === correctPin) go(2);
-        else { alert("Wrong Passcode!"); delPin(); }
-    }
-    function go(id) {
+    let pin = "";
+    function addPin(n) { if(pin.length<4){ pin+=n; document.getElementById('dots').innerText="•".repeat(pin.length); } }
+    function delPin() { pin=""; document.getElementById('dots').innerText=""; }
+    function verifyPin() { if(pin==="2008") go(2); else { alert("Wrong!"); delPin(); } }
+    
+    function go(n) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('pg' + id).classList.add('active');
+        document.getElementById('pg'+n).classList.add('active');
     }
+
     function capture() {
-        document.getElementById('flash').classList.add('flash-on');
-        setTimeout(() => {
-            document.getElementById('flash').classList.remove('flash-on');
-            go(3);
-        }, 400);
+        document.getElementById('flash').classList.add('blink');
+        setTimeout(() => { document.getElementById('flash').classList.remove('blink'); go(3); }, 400);
     }
-    function playMusic() {
-        let audio = document.getElementById('bdaySong');
-        audio.play().catch(e => alert("Please click again to play!"));
-        document.getElementById('playBtn').innerText = "❤️ Playing...";
+
+    function toggleMusic() {
+        const s = document.getElementById('song');
+        const cd = document.getElementById('cd');
+        if(s.paused) {
+            s.play();
+            cd.style.animationPlayState = 'running';
+            document.getElementById('playBtn').innerText = "❤️ Playing...";
+        } else {
+            s.pause();
+            cd.style.animationPlayState = 'paused';
+            document.getElementById('playBtn').innerText = "🎵 Play Music";
+        }
     }
 </script>
 
